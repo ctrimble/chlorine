@@ -7,16 +7,13 @@
     <groupId>com.github.ctrimble.neon</groupId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>neon-asm</artifactId>
-  <name>Neon :: ASM</name>
+  <artifactId>neon-service</artifactId>
+  <name>Neon :: Service</name>
+  <url>http://maven.apache.org</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   <dependencies>
-    <dependency>
-	<groupId>org.ow2.asm</groupId>
-	<artifactId>asm</artifactId>
-    </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
