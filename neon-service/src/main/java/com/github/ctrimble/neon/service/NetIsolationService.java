@@ -66,6 +66,7 @@ public class NetIsolationService {
 	    */
 	   public static URL newURL( URL context, String spec ) throws MalformedURLException
 	   {
+		   System.out.println("Getting factory for "+spec);
 		   URLStreamHandlerFactory factory = streamFactory;
 		   if( factory == null ) return new URL( context, spec );
 	     return new URL(context, spec, factory.createURLStreamHandler(spec.substring(0, spec.indexOf(':'))));
