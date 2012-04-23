@@ -14,7 +14,7 @@
   </properties>
   <dependencies>
     <dependency>
-        <artifactId>neon-service</artifactId>
+        <artifactId>neon-core</artifactId>
     <groupId>com.github.ctrimble.neon</groupId>
     <version>0.0.1-SNAPSHOT</version>
     </dependency>

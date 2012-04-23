@@ -7,7 +7,7 @@
     <groupId>com.github.ctrimble.neon</groupId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>neon-service</artifactId>
+  <artifactId>neon-core</artifactId>
   <name>Neon :: Service</name>
   <url>http://maven.apache.org</url>
   <properties>

@@ -87,6 +87,6 @@
   </profiles>
   <modules>
   	<module>asm</module>
-  	<module>neon-service</module>
+  	<module>core</module>
   </modules>
 </project>
