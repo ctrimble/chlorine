@@ -13,7 +13,7 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
-package com.github.ctrimble.neon.service;
+package com.github.ctrimble.neon;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -24,12 +24,12 @@ import java.net.ContentHandlerFactory;
  * 
  * @author Christian Trimble
  */
-public class NetIsolationService {
+public class URLFactory {
 	  private static URLStreamHandlerFactory streamFactory = null;
 	  private static ContentHandlerFactory contentHandlerFactory = null;
 	  
 	  public static void setURLStreamHandlerFactory( URLStreamHandlerFactory streamFactory ) {
-		  NetIsolationService.streamFactory = streamFactory;
+		  URLFactory.streamFactory = streamFactory;
 	  }
 	  
 	  public static URLStreamHandlerFactory getURLStreamHandlerFactory() {
@@ -37,7 +37,7 @@ public class NetIsolationService {
 	  }
 	  
 	  public static void setContentHandlerFactory( ContentHandlerFactory contentHandlerFactory ) {
-		  NetIsolationService.contentHandlerFactory = contentHandlerFactory;
+		  URLFactory.contentHandlerFactory = contentHandlerFactory;
 	  }
 	  
 	  public static ContentHandlerFactory getContentHandlerFactory() {

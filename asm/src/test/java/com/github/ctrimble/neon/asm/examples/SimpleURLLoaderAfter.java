@@ -26,6 +26,6 @@ public class SimpleURLLoaderAfter
   implements URLLoader
 {
 	public String loadUrl(String spec) throws Exception {
-		return IOUtils.toString(com.github.ctrimble.neon.service.NetIsolationService.newURL(spec));
+		return IOUtils.toString(com.github.ctrimble.neon.URLFactory.newURL(spec));
 	}
 }

@@ -17,7 +17,7 @@ package com.github.ctrimble.neon.asm.examples;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import static com.github.ctrimble.neon.service.NetIsolationService.newURL;
+import static com.github.ctrimble.neon.URLFactory.newURL;
 
 public class GeneralAfter {
 	public static final String SPEC = "http://ctrimble.github.com/neon";

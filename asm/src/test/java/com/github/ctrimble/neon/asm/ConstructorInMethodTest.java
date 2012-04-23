@@ -21,13 +21,13 @@ import static com.github.ctrimble.neon.asm.Utils.*;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.github.ctrimble.neon.service.NetIsolationService;
+import com.github.ctrimble.neon.URLFactory;
 
 public class ConstructorInMethodTest {
 	
 	@BeforeClass
 	public static void registerLabel() {
-		NetIsolationService.setURLStreamHandlerFactory(new TestingURLStreamHandlerFactory());
+		URLFactory.setURLStreamHandlerFactory(new TestingURLStreamHandlerFactory());
 	}
 
 	@Test

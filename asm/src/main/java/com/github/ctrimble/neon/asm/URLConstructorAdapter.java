@@ -51,11 +51,11 @@ extends ClassVisitor
 	/** The method descriptions for new URL() that do not take a URLStreamHandler. */
     private static List<String> newUrlDescs = Arrays.asList("(Ljava/lang/String;)V", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "(Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;)V");
     /** The name of java.net.URL. */
-    private static String URL_DESC = "java/net/URL";
+    private static String URL_NAME = "java/net/URL";
     /** The name of the new method. */
     private static String INIT_NAME = "<init>";
     /** The name of the factory. */
-    private static String NET_ISOLATION_SERVICE_DESC = "com/github/ctrimble/neon/service/NetIsolationService";
+    private static String URL_FACTORY_NAME = "com/github/ctrimble/neon/URLFactory";
     /** The method name for the factory methods. */
     private static String NEW_URL_METHOD_NAME = "newURL";
 
@@ -86,7 +86,7 @@ public static class URLMethodVisitor
 	
 	public void visitTypeInsn(int opcode, String type)
 	{
-		if( opcode == NEW && URL_DESC.equals(type) ) currentNode = new CompositeInsnNode(currentNode);
+		if( opcode == NEW && URL_NAME.equals(type) ) currentNode = new CompositeInsnNode(currentNode);
 		if( currentNode != null ) currentNode.childList.add(new TypeInsnNode(opcode, type));
 		else mv.visitTypeInsn(opcode, type);
 	}
@@ -111,13 +111,13 @@ public static class URLMethodVisitor
 	public void visitMethodInsn(int opcode, String owner, String name, String desc)
     {
 		// if this is a URL constructor call, then we need to translate it.
-		if( opcode == INVOKESPECIAL && URL_DESC.equals(owner) && INIT_NAME.equals(name) ) {
+		if( opcode == INVOKESPECIAL && URL_NAME.equals(owner) && INIT_NAME.equals(name) ) {
 			if( currentNode == null ) throw new IllegalStateException();
 			
 			// this only translates the init methods that do not take a URLStreamHandler.
 			if(newUrlDescs.contains(desc)) {
 				currentNode.childList.subList(0, 2).clear();
-				currentNode.childList.add(new MethodInsnNode(INVOKESTATIC, NET_ISOLATION_SERVICE_DESC, NEW_URL_METHOD_NAME, desc.replaceAll("V$", "Ljava/net/URL;")));
+				currentNode.childList.add(new MethodInsnNode(INVOKESTATIC, URL_FACTORY_NAME, NEW_URL_METHOD_NAME, desc.replaceAll("V$", "Ljava/net/URL;")));
 			}
 			
 			// dump the output, if this is the root node.
