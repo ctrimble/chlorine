@@ -17,8 +17,8 @@ package com.github.ctrimble.neon;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLStreamHandler;
 import java.net.URLStreamHandlerFactory;
-import java.net.ContentHandlerFactory;
 /**
  * The class loader isolated replacement for java.net.URL constructors.
  * 
@@ -26,7 +26,6 @@ import java.net.ContentHandlerFactory;
  */
 public class URLFactory {
 	  private static URLStreamHandlerFactory streamFactory = null;
-	  private static ContentHandlerFactory contentHandlerFactory = null;
 	  
 	  public static void setURLStreamHandlerFactory( URLStreamHandlerFactory streamFactory ) {
 		  URLFactory.streamFactory = streamFactory;
@@ -35,17 +34,9 @@ public class URLFactory {
 	  public static URLStreamHandlerFactory getURLStreamHandlerFactory() {
 		  return streamFactory;
 	  }
-	  
-	  public static void setContentHandlerFactory( ContentHandlerFactory contentHandlerFactory ) {
-		  URLFactory.contentHandlerFactory = contentHandlerFactory;
-	  }
-	  
-	  public static ContentHandlerFactory getContentHandlerFactory() {
-		  return contentHandlerFactory;
-	  }
 	   
 	  /**
-	   * A replacement for the new java.net.URL( String spec ) constructor.
+	   * A replacement for the new java.net.URL( String ) constructor.
 	   * 
 	   * @param spec
 	   * @return
@@ -68,7 +59,15 @@ public class URLFactory {
 	   {
 		   URLStreamHandlerFactory factory = streamFactory;
 		   if( factory == null ) return new URL( context, spec );
-	     return new URL(context, spec, factory.createURLStreamHandler(spec.substring(0, spec.indexOf(':'))));
+	       return new URL(context, spec, factory.createURLStreamHandler(spec.substring(0, spec.indexOf(':'))));
+	   }
+	   
+	   public static URL newURL( URL context, String spec, URLStreamHandler handler ) throws MalformedURLException
+	   {
+		   if( handler != null ) return new URL(context, spec, handler);
+		   URLStreamHandlerFactory factory = streamFactory;
+		   if( factory == null ) return new URL( context, spec );
+	       return new URL(context, spec, factory.createURLStreamHandler(spec.substring(0, spec.indexOf(':'))));
 	   }
 	
 	   /**
@@ -99,5 +98,13 @@ public class URLFactory {
 		   URLStreamHandlerFactory factory = streamFactory;
 		   if( factory == null ) return new URL( protocol, host, port, file );
 	     return new URL( protocol, host, port, file, factory.createURLStreamHandler( protocol ) );
+	   }
+	   
+	   public static URL newURL( String protocol, String host, int port, String file, URLStreamHandler handler ) throws MalformedURLException
+	   {
+		   if( handler != null ) return new URL(protocol, host, port, file, handler);
+		   URLStreamHandlerFactory factory = streamFactory;
+		   if( factory == null ) return new URL( protocol, host, port, file );
+	       return new URL( protocol, host, port, file, factory.createURLStreamHandler( protocol ) );
 	   }
 }

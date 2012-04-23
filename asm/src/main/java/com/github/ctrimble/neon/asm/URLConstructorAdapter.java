@@ -21,7 +21,6 @@ import static org.objectweb.asm.Opcodes.INVOKESTATIC;
 import static org.objectweb.asm.Opcodes.NEW;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -48,8 +47,6 @@ import org.objectweb.asm.tree.VarInsnNode;
 public class URLConstructorAdapter
 extends ClassVisitor
 {
-	/** The method descriptions for new URL() that do not take a URLStreamHandler. */
-    private static List<String> newUrlDescs = Arrays.asList("(Ljava/lang/String;)V", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "(Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;)V");
     /** The name of java.net.URL. */
     private static String URL_NAME = "java/net/URL";
     /** The name of the new method. */
@@ -70,14 +67,13 @@ extends ClassVisitor
 
 
 /**
- * Replaces all calls to new URL(), that do not take a URLStreamHandler, into NetIsonlationService.newURL() calls.
+ * Replaces all calls to new URL(...) with calls to URLFactory.newURL(...).
  * 
  * @author Christian Trimble
  */
 public static class URLMethodVisitor
   extends MethodVisitor {
     
-    //private ArrayList<AbstractInsnNode> insnNodes = new ArrayList<AbstractInsnNode>();
     private CompositeInsnNode currentNode = null;
     
 	public URLMethodVisitor(MethodVisitor next) {
@@ -115,10 +111,8 @@ public static class URLMethodVisitor
 			if( currentNode == null ) throw new IllegalStateException();
 			
 			// this only translates the init methods that do not take a URLStreamHandler.
-			if(newUrlDescs.contains(desc)) {
-				currentNode.childList.subList(0, 2).clear();
-				currentNode.childList.add(new MethodInsnNode(INVOKESTATIC, URL_FACTORY_NAME, NEW_URL_METHOD_NAME, desc.replaceAll("V$", "Ljava/net/URL;")));
-			}
+		    currentNode.childList.subList(0, 2).clear();
+			currentNode.childList.add(new MethodInsnNode(INVOKESTATIC, URL_FACTORY_NAME, NEW_URL_METHOD_NAME, desc.replaceAll("V$", "Ljava/net/URL;")));
 			
 			// dump the output, if this is the root node.
 			if( currentNode.parent == null ) currentNode.accept(mv);
