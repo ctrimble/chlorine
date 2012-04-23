@@ -38,36 +38,42 @@ public class GeneralAfter {
   
   public void specURL() throws MalformedURLException
   {
+	  @SuppressWarnings("unused")
 	  URL url = newURL(SPEC);
 	  specURL = newURL(SPEC);
   }
   
   public void protocolHostPathURL() throws MalformedURLException
   {
+	  @SuppressWarnings("unused")
 	  URL url = newURL(PROTOCOL, HOST, PATH);
 	  protocolHostPathURL = newURL(PROTOCOL, HOST, PATH);
   }
   
   public void protocolHostPortPathURL() throws MalformedURLException
   {
+	  @SuppressWarnings("unused")
 	  URL url = newURL(PROTOCOL, HOST, PORT, PATH);
 	  protocolHostPortPathURL = newURL(PROTOCOL, HOST, PORT, PATH);
   }
   
   public static void staticSpecURL() throws MalformedURLException
   {
+	  @SuppressWarnings("unused")
 	  URL url = newURL(SPEC);  
 	  staticSpecURL = newURL(SPEC);  
   }
   
   public static void staticProtocolHostPathURL() throws MalformedURLException
   {
+	  @SuppressWarnings("unused")
 	  URL url = newURL(PROTOCOL, HOST, PATH);
 	  staticProtocolHostPathURL = newURL(PROTOCOL, HOST, PATH);
   }
   
   public static void staticProtocolHostPortPathURL() throws MalformedURLException
   {
+	  @SuppressWarnings("unused")
 	  URL url = newURL(PROTOCOL, HOST, PORT, PATH);
 	  staticProtocolHostPortPathURL = newURL(PROTOCOL, HOST, PORT, PATH);
   }
@@ -81,18 +87,21 @@ public class GeneralAfter {
 	  
 	  public void specURL() throws MalformedURLException
 	  {
+		  @SuppressWarnings("unused")
 		  URL url = newURL(SPEC);
 		  specURL = newURL(SPEC);
 	  }
 	  
 	  public void protocolHostPathURL() throws MalformedURLException
 	  {
+		  @SuppressWarnings("unused")
 		  URL url = newURL(PROTOCOL, HOST, PATH);
 		  protocolHostPathURL = newURL(PROTOCOL, HOST, PATH);
 	  }
 	  
 	  public void protocolHostPortPathURL() throws MalformedURLException
 	  {
+		  @SuppressWarnings("unused")
 		  URL url = newURL(PROTOCOL, HOST, PORT, PATH);
 		  protocolHostPortPathURL = newURL(PROTOCOL, HOST, PORT, PATH);
 	  }
@@ -126,18 +135,21 @@ public class GeneralAfter {
 	  
 	  public void specURL() throws MalformedURLException
 	  {
+		  @SuppressWarnings("unused")
 		  URL url = newURL(SPEC);
 		  specURL = newURL(SPEC);
 	  }
 	  
 	  public void protocolHostPathURL() throws MalformedURLException
 	  {
+		  @SuppressWarnings("unused")
 		  URL url = newURL(PROTOCOL, HOST, PATH);
 		  protocolHostPathURL = newURL(PROTOCOL, HOST, PATH);
 	  }
 	  
 	  public void protocolHostPortPathURL() throws MalformedURLException
 	  {
+		  @SuppressWarnings("unused")
 		  URL url = newURL(PROTOCOL, HOST, PORT, PATH);
 		  protocolHostPortPathURL = newURL(PROTOCOL, HOST, PORT, PATH);
 	  }

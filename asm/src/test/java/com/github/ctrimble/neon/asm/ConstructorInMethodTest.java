@@ -22,6 +22,7 @@ public class ConstructorInMethodTest {
 		Class<?> simpleClass = classLoader.translateAndDefineClass("com.github.ctrimble.neon.asm.SimpleURLLoader", simpleClassBytes);
 		URLLoader loader = (URLLoader)simpleClass.newInstance();
 		String value = loader.loadUrl("label://host/path");
+		assertEquals("TESTING=/path", value);
 	}
 
 	public static class TranslatingClassLoader

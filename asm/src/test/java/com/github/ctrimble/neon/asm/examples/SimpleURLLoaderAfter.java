@@ -6,6 +6,7 @@ import org.apache.commons.io.IOUtils;
 
 import com.github.ctrimble.neon.asm.URLLoader;
 
+@SuppressWarnings("unused")
 public class SimpleURLLoaderAfter
   implements URLLoader
 {

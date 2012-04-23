@@ -3,6 +3,7 @@ package com.github.ctrimble.neon.asm.examples;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+
 public class GeneralBefore {
 	public static final String SPEC = "http://ctrimble.github.com/neon";
 	public static final String PROTOCOL = "http";
@@ -37,36 +38,42 @@ public class GeneralBefore {
   
   public void specURL() throws MalformedURLException
   {
+	  @SuppressWarnings("unused")
 	  URL url = new URL(SPEC);
 	  specURL = new URL(SPEC);
   }
   
   public void protocolHostPathURL() throws MalformedURLException
   {
+	  @SuppressWarnings("unused")
 	  URL url = new URL(PROTOCOL, HOST, PATH);
 	  protocolHostPathURL = new URL(PROTOCOL, HOST, PATH);
   }
   
   public void protocolHostPortPathURL() throws MalformedURLException
   {
+	  @SuppressWarnings("unused")
 	  URL url = new URL(PROTOCOL, HOST, PORT, PATH);
 	  protocolHostPortPathURL = new URL(PROTOCOL, HOST, PORT, PATH);
   }
   
   public static void staticSpecURL() throws MalformedURLException
   {
+	  @SuppressWarnings("unused")
 	  URL url = new URL(SPEC);  
 	  staticSpecURL = new URL(SPEC);  
   }
   
   public static void staticProtocolHostPathURL() throws MalformedURLException
   {
+	  @SuppressWarnings("unused")
 	  URL url = new URL(PROTOCOL, HOST, PATH);
 	  staticProtocolHostPathURL = new URL(PROTOCOL, HOST, PATH);
   }
   
   public static void staticProtocolHostPortPathURL() throws MalformedURLException
   {
+	  @SuppressWarnings("unused")
 	  URL url = new URL(PROTOCOL, HOST, PORT, PATH);
 	  staticProtocolHostPortPathURL = new URL(PROTOCOL, HOST, PORT, PATH);
   }
@@ -80,18 +87,21 @@ public class GeneralBefore {
 	  
 	  public void specURL() throws MalformedURLException
 	  {
+		  @SuppressWarnings("unused")
 		  URL url = new URL(SPEC);
 		  specURL = new URL(SPEC);
 	  }
 	  
 	  public void protocolHostPathURL() throws MalformedURLException
 	  {
+		  @SuppressWarnings("unused")
 		  URL url = new URL(PROTOCOL, HOST, PATH);
 		  protocolHostPathURL = new URL(PROTOCOL, HOST, PATH);
 	  }
 	  
 	  public void protocolHostPortPathURL() throws MalformedURLException
 	  {
+		  @SuppressWarnings("unused")
 		  URL url = new URL(PROTOCOL, HOST, PORT, PATH);
 		  protocolHostPortPathURL = new URL(PROTOCOL, HOST, PORT, PATH);
 	  }
@@ -125,18 +135,21 @@ public class GeneralBefore {
 	  
 	  public void specURL() throws MalformedURLException
 	  {
+		  @SuppressWarnings("unused")
 		  URL url = new URL(SPEC);
 		  specURL = new URL(SPEC);
 	  }
 	  
 	  public void protocolHostPathURL() throws MalformedURLException
 	  {
+		  @SuppressWarnings("unused")
 		  URL url = new URL(PROTOCOL, HOST, PATH);
 		  protocolHostPathURL = new URL(PROTOCOL, HOST, PATH);
 	  }
 	  
 	  public void protocolHostPortPathURL() throws MalformedURLException
 	  {
+		  @SuppressWarnings("unused")
 		  URL url = new URL(PROTOCOL, HOST, PORT, PATH);
 		  protocolHostPortPathURL = new URL(PROTOCOL, HOST, PORT, PATH);
 	  }

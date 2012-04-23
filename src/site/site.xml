@@ -1,0 +1,37 @@
+<project
+  xmlns="http://maven.apache.org/DECORATION/1.1.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/DECORATION/1.1.0 http://maven.apache.org/xsd/decoration-1.1.0.xsd">
+
+  <skin>
+    <groupId>org.apache.maven.skins</groupId>
+    <artifactId>maven-fluido-skin</artifactId>
+    <version>1.1</version>
+  </skin>
+
+  <body>
+    <menu name="Neon">
+      <item name="JavaDocs" href="apidocs/index.html"/>
+    </menu>
+    <menu ref="reports"/>
+  </body>
+
+  <custom>
+    <fluidoSkin>
+      <topBarEnabled>true</topBarEnabled>
+      <sideBarEnabled>true</sideBarEnabled>
+      <topBarIcon>
+        <name>Project Neon</name>
+        <alt>Project Neon</alt>
+        <src>/images/topbar-logo.png</src>
+        <href>/index.html</href>
+      </topBarIcon>
+      <sourceLineNumbersEnabled>true</sourceLineNumbersEnabled>
+      <twitter>
+        <user>xiantrimble</user>
+        <showUser>true</showUser>
+        <showFollowers>true</showFollowers>
+      </twitter>
+    </fluidoSkin>
+  </custom>
+</project>
