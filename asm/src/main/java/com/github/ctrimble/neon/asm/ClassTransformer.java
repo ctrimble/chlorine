@@ -29,7 +29,8 @@ public class ClassTransformer {
 	  ClassWriter cw = new ClassWriter(cr, ClassWriter.COMPUTE_MAXS+ClassWriter.COMPUTE_FRAMES);
 	  CheckClassAdapter cca = new CheckClassAdapter(cw);
 	  URLConstructorAdapter adapter = new URLConstructorAdapter(cca);
-      cr.accept(adapter, 0);
+	  ClassLoaderAdapter clAdapter = new ClassLoaderAdapter(adapter);
+      cr.accept(clAdapter, 0);
 	  return cw.toByteArray();
   }
 }
