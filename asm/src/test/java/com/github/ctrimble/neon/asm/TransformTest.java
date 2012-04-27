@@ -62,7 +62,7 @@ public class TransformTest {
 		// do the transform.
 		byte[] beforeBytes = Utils.getResourceBytes(namePattern.replaceAll("<TYPE>", "Before"));
 		
-		byte[] resultBytes = ClassTransformer.transform(beforeBytes);
+		byte[] resultBytes = ClassTransformer.transform(beforeBytes, new ClassByteLoader(this.getClass().getClassLoader()));
 		
 		// create a string out of the result bytes.
 		StringWriter resultWriter = new StringWriter();

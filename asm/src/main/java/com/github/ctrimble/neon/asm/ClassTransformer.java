@@ -16,6 +16,7 @@
 package com.github.ctrimble.neon.asm;
 
 import org.objectweb.asm.ClassReader;
+import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.util.CheckClassAdapter;
 
@@ -24,13 +25,24 @@ import org.objectweb.asm.util.CheckClassAdapter;
  * @author Christian Trimble
  */
 public class ClassTransformer {
-  public static byte[] transform( byte[] source ) {
+	
+	  public static byte[] transform( byte[] source, ClassByteLoader loader  ) {
+		  return transform(source, 0, source.length, loader);
+	  }
+	  
+  public static byte[] transform( byte[] source, int off, int len, ClassByteLoader loader ) {
 	  ClassReader cr = new ClassReader(source);
 	  ClassWriter cw = new ClassWriter(cr, ClassWriter.COMPUTE_MAXS+ClassWriter.COMPUTE_FRAMES);
-	  CheckClassAdapter cca = new CheckClassAdapter(cw);
-	  URLConstructorAdapter adapter = new URLConstructorAdapter(cca);
-	  ClassLoaderAdapter clAdapter = new ClassLoaderAdapter(adapter);
-      cr.accept(clAdapter, 0);
+	  ClassVisitor cv = createVisitor(cr, loader, cw);
+      cr.accept(cv, 0);
 	  return cw.toByteArray();
+  }
+  
+  public static ClassVisitor createVisitor(ClassReader cr, ClassByteLoader loader, ClassVisitor cv) {
+	  CheckClassAdapter cleckClass = new CheckClassAdapter(cv);
+	  URLConstructorAdapter urlConstructor = new URLConstructorAdapter(cleckClass);
+	  ClassLoaderAdapter classLoader = new ClassLoaderAdapter(urlConstructor);
+	  DefineClassAdapter defineClass = new DefineClassAdapter(cr, loader, classLoader); 
+	  return defineClass;
   }
 }

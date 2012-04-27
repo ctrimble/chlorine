@@ -47,10 +47,12 @@ public class ConstructorInMethodTest {
 			super(parent);
 		}
 		
+		ClassByteLoader loader = new ClassByteLoader(this);
+		
 		public Class<?> translateAndDefineClass(String name, byte[] source)
           throws ClassFormatError
         {
-		  byte[] bt = ClassTransformer.transform(source);
+		  byte[] bt = ClassTransformer.transform(source, loader);
           return defineClass(name, bt, 0, bt.length);
         }
 	  }
