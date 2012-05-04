@@ -43,6 +43,7 @@ public class ClassTransformer {
 	  URLConstructorAdapter urlConstructor = new URLConstructorAdapter(cleckClass);
 	  ClassLoaderAdapter classLoader = new ClassLoaderAdapter(urlConstructor);
 	  DefineClassAdapter defineClass = new DefineClassAdapter(cr, loader, classLoader); 
-	  return defineClass;
+	  ReflectionAdapter reflectionAdapter = new ReflectionAdapter(defineClass);
+	  return reflectionAdapter;
   }
 }

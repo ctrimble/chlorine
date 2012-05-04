@@ -2,15 +2,14 @@ package com.github.ctrimble.neon.asm;
 
 import static org.junit.Assert.*;
 
-import java.io.IOException;
-
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.github.ctrimble.neon.URLFactory;
+import com.github.ctrimble.neon.asm.NestedClassLoaderTest.IsolatedNeonClassLoader;
 import com.github.ctrimble.neon.classloader.NeonClassLoader;
 
-public class NestedClassLoaderTest {
+public class ReflectionClassLoaderTest {
 	@BeforeClass
 	public static void registerLabel() {
 		URLFactory.setURLStreamHandlerFactory(new TestingURLStreamHandlerFactory());
@@ -21,7 +20,7 @@ public class NestedClassLoaderTest {
 		// get the loader class.
 		IsolatedNeonClassLoader isolatedCl = new IsolatedNeonClassLoader(this.getClass().getClassLoader());
 		@SuppressWarnings("unchecked")
-		Class<? extends URLLoader> urlLoaderClass = (Class<? extends URLLoader>)isolatedCl.loadClass("com.github.ctrimble.neon.asm.isolated.NestedURLLoader");
+		Class<? extends URLLoader> urlLoaderClass = (Class<? extends URLLoader>)isolatedCl.loadClass("com.github.ctrimble.neon.asm.isolated.ReflectionURLLoader");
 
 		// create a new loader.
 		URLLoader loader = urlLoaderClass.newInstance();
