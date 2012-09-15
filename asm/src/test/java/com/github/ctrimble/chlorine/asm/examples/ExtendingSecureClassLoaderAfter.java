@@ -15,10 +15,10 @@
  */
 package com.github.ctrimble.chlorine.asm.examples;
 
-import com.github.ctrimble.chlorine.classloader.NeonSecureClassLoader;
+import com.github.ctrimble.chlorine.classloader.ChlorineSecureClassLoader;
 
 public class ExtendingSecureClassLoaderAfter
-  extends NeonSecureClassLoader
+  extends ChlorineSecureClassLoader
 {
 	public ExtendingSecureClassLoaderAfter() {
 		super();

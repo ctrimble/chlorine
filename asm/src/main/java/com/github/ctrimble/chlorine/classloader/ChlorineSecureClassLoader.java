@@ -15,34 +15,26 @@
  */
 package com.github.ctrimble.chlorine.classloader;
 
-import java.net.URL;
-import java.net.URLClassLoader;
-import java.net.URLStreamHandlerFactory;
 import java.nio.ByteBuffer;
 import java.security.CodeSource;
 import java.security.ProtectionDomain;
+import java.security.SecureClassLoader;
 
 import com.github.ctrimble.chlorine.asm.ClassByteLoader;
 import com.github.ctrimble.chlorine.asm.ClassTransformer;
 
-public class NeonURLClassLoader extends URLClassLoader implements NeonSecureClassDefiner {
+public class ChlorineSecureClassLoader extends SecureClassLoader implements ChlorineSecureClassDefiner {
+
 	private ClassByteLoader loader;
-
-	public NeonURLClassLoader(URL[] urls) {
-		super(urls);
+	public ChlorineSecureClassLoader() {
 		loader = new ClassByteLoader(this);
 	}
 
-	public NeonURLClassLoader(URL[] urls, ClassLoader parent) {
-		super(urls, parent);
+	public ChlorineSecureClassLoader(ClassLoader parent) {
+		super(parent);
 		loader = new ClassByteLoader(this);
 	}
 
-	public NeonURLClassLoader(URL[] urls, ClassLoader parent, URLStreamHandlerFactory factory) {
-		super(urls, parent, factory);
-		loader = new ClassByteLoader(this);
-	}
-	
 	@SuppressWarnings("deprecation")
 	public Class<?> chlorineDefineClass(byte[] b, int off, int len)
 			throws ClassFormatError {
@@ -79,4 +71,5 @@ public class NeonURLClassLoader extends URLClassLoader implements NeonSecureClas
 	    b.get(newBytes);
 		return defineClass(name, newBytes, 0, newBytes.length, cs);
 	}
+
 }

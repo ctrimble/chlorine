@@ -18,7 +18,7 @@ package com.github.ctrimble.chlorine.classloader;
 import java.nio.ByteBuffer;
 import java.security.ProtectionDomain;
 
-public interface NeonClassDefiner {
+public interface ChlorineClassDefiner {
 	Class<?> chlorineDefineClass(byte[] b, int off, int len)
 			throws ClassFormatError;
 

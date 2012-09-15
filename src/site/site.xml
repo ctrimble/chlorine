@@ -27,7 +27,7 @@
   </skin>
 
   <body>
-    <menu name="Neon">
+    <menu name="Chlorine">
       <item name="JavaDocs" href="apidocs/index.html"/>
     </menu>
     <menu ref="reports"/>
@@ -38,8 +38,8 @@
       <topBarEnabled>true</topBarEnabled>
       <sideBarEnabled>true</sideBarEnabled>
       <topBarIcon>
-        <name>Project Neon</name>
-        <alt>Project Neon</alt>
+        <name>Project Chlorine</name>
+        <alt>Project Chlorine</alt>
         <src>/images/topbar-logo.png</src>
         <href>/index.html</href>
       </topBarIcon>

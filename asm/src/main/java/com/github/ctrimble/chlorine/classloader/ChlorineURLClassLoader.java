@@ -15,52 +15,68 @@
  */
 package com.github.ctrimble.chlorine.classloader;
 
+import java.net.URL;
+import java.net.URLClassLoader;
+import java.net.URLStreamHandlerFactory;
 import java.nio.ByteBuffer;
+import java.security.CodeSource;
 import java.security.ProtectionDomain;
 
 import com.github.ctrimble.chlorine.asm.ClassByteLoader;
 import com.github.ctrimble.chlorine.asm.ClassTransformer;
 
-public abstract class NeonDefineClass {
+public class ChlorineURLClassLoader extends URLClassLoader implements ChlorineSecureClassDefiner {
 	private ClassByteLoader loader;
-	public NeonDefineClass( ClassLoader cl ) {
-		loader = new ClassByteLoader(cl);
-	}
-	
-	protected Class<?> defineClass(byte[] b, int off, int len)
-			throws ClassFormatError {
-		byte[] newBytes = ClassTransformer.transform(b, off, len, loader);
-		return parentDefineClass(newBytes, 0, newBytes.length);
+
+	public ChlorineURLClassLoader(URL[] urls) {
+		super(urls);
+		loader = new ClassByteLoader(this);
 	}
 
-	protected Class<?> defineClass(String name, byte[] b, int off, int len)
+	public ChlorineURLClassLoader(URL[] urls, ClassLoader parent) {
+		super(urls, parent);
+		loader = new ClassByteLoader(this);
+	}
+
+	public ChlorineURLClassLoader(URL[] urls, ClassLoader parent, URLStreamHandlerFactory factory) {
+		super(urls, parent, factory);
+		loader = new ClassByteLoader(this);
+	}
+	
+	@SuppressWarnings("deprecation")
+	public Class<?> chlorineDefineClass(byte[] b, int off, int len)
+			throws ClassFormatError {
+		byte[] newBytes = ClassTransformer.transform(b, off, len, loader);
+		return defineClass(newBytes, 0, newBytes.length);
+	}
+
+	public Class<?> chlorineDefineClass(String name, byte[] b, int off, int len)
 			throws ClassFormatError {
 		byte[] newBytes = ClassTransformer.transform(b, off, len, loader);
 		return defineClass(name, newBytes, 0, newBytes.length);
 	}
 
-	protected Class<?> defineClass(String name, byte[] b, int off, int len,
+	public Class<?> chlorineDefineClass(String name, byte[] b, int off, int len,
 			ProtectionDomain protectionDomain) throws ClassFormatError {
 		byte[] newBytes = ClassTransformer.transform(b, off, len, loader);
 		return defineClass(name,  newBytes, 0, newBytes.length, protectionDomain);
 	}
 
-	protected Class<?> defineClass(String name, ByteBuffer b, ProtectionDomain protectionDomain) throws ClassFormatError {
+	public Class<?> chlorineDefineClass(String name, ByteBuffer b,
+			ProtectionDomain protectionDomain) throws ClassFormatError {
 		byte[] newBytes = new byte[b.remaining()];
 	    b.get(newBytes);
 		return defineClass(name, newBytes, 0, newBytes.length, protectionDomain);
 	}
-	
-	public abstract Class<?> parentDefineClass(byte[] b, int off, int len)
-			throws ClassFormatError;
 
-	public abstract Class<?> parentDefineClass(String name, byte[] b, int off, int len)
-			throws ClassFormatError;
-	
-	public abstract Class<?> parentDefineClass(String name, byte[] b, int off, int len,
-			ProtectionDomain protectionDomain)
-			throws ClassFormatError;
-	
-	public abstract Class<?> parentDefineClass(String name, ByteBuffer b, ProtectionDomain protectionDomain)
-			throws ClassFormatError;
+	public Class<?> chlorineDefineClass(String name, byte[] b, int off, int len, CodeSource cs) {
+		byte[] newBytes = ClassTransformer.transform(b, off, len, loader);
+		return defineClass(name, newBytes, 0, newBytes.length, cs);
+	}
+
+	public Class<?> chlorineDefineClass(String name, ByteBuffer b, CodeSource cs) {
+		byte[] newBytes = new byte[b.remaining()];
+	    b.get(newBytes);
+		return defineClass(name, newBytes, 0, newBytes.length, cs);
+	}
 }

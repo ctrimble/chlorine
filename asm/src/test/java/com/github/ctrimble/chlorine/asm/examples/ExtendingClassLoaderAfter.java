@@ -15,10 +15,10 @@
  */
 package com.github.ctrimble.chlorine.asm.examples;
 
-import com.github.ctrimble.chlorine.classloader.NeonClassLoader;
+import com.github.ctrimble.chlorine.classloader.ChlorineClassLoader;
 
 public class ExtendingClassLoaderAfter
-  extends NeonClassLoader
+  extends ChlorineClassLoader
 {
 	public ExtendingClassLoaderAfter() {
 		super();

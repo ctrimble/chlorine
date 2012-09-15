@@ -18,10 +18,10 @@ package com.github.ctrimble.chlorine.asm.examples;
 import java.net.URL;
 import java.net.URLStreamHandlerFactory;
 
-import com.github.ctrimble.chlorine.classloader.NeonURLClassLoader;
+import com.github.ctrimble.chlorine.classloader.ChlorineURLClassLoader;
 
 public class ExtendingURLClassLoaderAfter
-  extends NeonURLClassLoader
+  extends ChlorineURLClassLoader
 {
 	public ExtendingURLClassLoaderAfter(URL[] urls) {
 		super(urls);

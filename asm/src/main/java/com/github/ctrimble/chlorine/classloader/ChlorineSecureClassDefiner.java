@@ -18,8 +18,8 @@ package com.github.ctrimble.chlorine.classloader;
 import java.nio.ByteBuffer;
 import java.security.CodeSource;
 
-public interface NeonSecureClassDefiner
-  extends NeonClassDefiner {
+public interface ChlorineSecureClassDefiner
+  extends ChlorineClassDefiner {
     Class<?> chlorineDefineClass(String name, byte[] b, int off, int len, CodeSource cs);
     Class<?> chlorineDefineClass(String name, ByteBuffer b, CodeSource cs);
 }

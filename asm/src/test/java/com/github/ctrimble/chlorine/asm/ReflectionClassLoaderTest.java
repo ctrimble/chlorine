@@ -6,8 +6,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.github.ctrimble.chlorine.URLFactory;
-import com.github.ctrimble.chlorine.asm.NestedClassLoaderTest.IsolatedNeonClassLoader;
-import com.github.ctrimble.chlorine.classloader.NeonClassLoader;
+import com.github.ctrimble.chlorine.asm.NestedClassLoaderTest.IsolatedChlorineClassLoader;
+import com.github.ctrimble.chlorine.classloader.ChlorineClassLoader;
 
 public class ReflectionClassLoaderTest {
 	@BeforeClass
@@ -18,7 +18,7 @@ public class ReflectionClassLoaderTest {
 	@Test
 	public void testExtendingClassLoader() throws Exception {  
 		// get the loader class.
-		IsolatedNeonClassLoader isolatedCl = new IsolatedNeonClassLoader(this.getClass().getClassLoader());
+		IsolatedChlorineClassLoader isolatedCl = new IsolatedChlorineClassLoader(this.getClass().getClassLoader());
 		@SuppressWarnings("unchecked")
 		Class<? extends URLLoader> urlLoaderClass = (Class<? extends URLLoader>)isolatedCl.loadClass("com.github.ctrimble.chlorine.asm.isolated.ReflectionURLLoader");
 
@@ -31,10 +31,10 @@ public class ReflectionClassLoaderTest {
 		assertEquals("TESTING=/path", value);
 	}
 	
-	public static class IsolatedNeonClassLoader
-	  extends NeonClassLoader
+	public static class IsolatedChlorineClassLoader
+	  extends ChlorineClassLoader
 	  {
-		public IsolatedNeonClassLoader( ClassLoader parent ) {
+		public IsolatedChlorineClassLoader( ClassLoader parent ) {
 			super(parent);
 		}
 		 public Class<?> loadClass(String className, boolean resolve)

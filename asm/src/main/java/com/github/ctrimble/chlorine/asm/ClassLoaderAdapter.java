@@ -32,11 +32,11 @@ import org.objectweb.asm.MethodVisitor;
  */
 public class ClassLoaderAdapter extends ClassVisitor {
     private static Map<String, String> superNameMap = new HashMap<String, String>();
-    private static String NEON_CLASSLOADER_PACKAGE = "com/github/ctrimble/chlorine/classloader/";
+    private static String CHLORINE_CLASSLOADER_PACKAGE = "com/github/ctrimble/chlorine/classloader/";
     static {
-    	superNameMap.put("java/lang/ClassLoader", "com/github/ctrimble/chlorine/classloader/NeonClassLoader");
-    	superNameMap.put("java/security/SecureClassLoader", "com/github/ctrimble/chlorine/classloader/NeonSecureClassLoader");
-    	superNameMap.put("java/net/URLClassLoader", "com/github/ctrimble/chlorine/classloader/NeonURLClassLoader");
+    	superNameMap.put("java/lang/ClassLoader", "com/github/ctrimble/chlorine/classloader/ChlorineClassLoader");
+    	superNameMap.put("java/security/SecureClassLoader", "com/github/ctrimble/chlorine/classloader/ChlorineSecureClassLoader");
+    	superNameMap.put("java/net/URLClassLoader", "com/github/ctrimble/chlorine/classloader/ChlorineURLClassLoader");
     	// TODO: add the two classloaders from javax.management
     }
 	public ClassLoaderAdapter(ClassVisitor next) {
@@ -48,7 +48,7 @@ public class ClassLoaderAdapter extends ClassVisitor {
 
 	@Override
 	public void visit(int version, int access, String name, String signature, String superName, String[] interfaces) {
-		if( name.startsWith("java/") || name.startsWith("javax/") ||  name.startsWith(NEON_CLASSLOADER_PACKAGE) )
+		if( name.startsWith("java/") || name.startsWith("javax/") ||  name.startsWith(CHLORINE_CLASSLOADER_PACKAGE) )
 			super.visit(version, access, name, signature, superName, interfaces);
 		else if( superNameMap.containsKey(superName) ) {
 			oldSuperName = superName;

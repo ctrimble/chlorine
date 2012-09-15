@@ -6,14 +6,14 @@ import java.security.ProtectionDomain;
 import com.github.ctrimble.chlorine.asm.ClassByteLoader;
 import com.github.ctrimble.chlorine.asm.ClassTransformer;
 
-public class NeonClassLoader extends ClassLoader implements NeonClassDefiner {
+public class ChlorineClassLoader extends ClassLoader implements ChlorineClassDefiner {
 
 	private ClassByteLoader loader;
-	public NeonClassLoader() {
+	public ChlorineClassLoader() {
 		loader = new ClassByteLoader(this);
 	}
 
-	public NeonClassLoader(ClassLoader parent) {
+	public ChlorineClassLoader(ClassLoader parent) {
 		super(parent);
 		loader = new ClassByteLoader(this);
 	}

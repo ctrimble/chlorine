@@ -27,14 +27,14 @@ import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.MethodVisitor;
 
 public class DefineClassAdapter extends ClassVisitor {
-    private static String NEON_CLASSLOADER_PACKAGE = "com/github/ctrimble/chlorine/classloader/";
-    private static String NEON_DEFINE_CLASS_NAME = "chlorineDefineClass";
+    private static String CHLORINE_CLASSLOADER_PACKAGE = "com/github/ctrimble/chlorine/classloader/";
+    private static String CHLORINE_DEFINE_CLASS_NAME = "chlorineDefineClass";
     private static String CLASS_LOADER_NAME = "java/lang/ClassLoader";
     private static String SECURE_CLASS_LOADER_NAME = "java/security/SecureClassLoader";
     private static String URL_CLASS_LOADER_NAME = "java/net/URLClassLoader";
-    private static String NEON_SECURE_CLASS_LOADER_NAME = "com/github/ctrimble/chlorine/classloader/NeonSecureClassLoader";
-    private static String NEON_CLASS_LOADER_NAME = "com/github/ctrimble/chlorine/classloader/NeonClassLoader";
-    private static String NEON_URL_CLASS_LOADER_NAME = "com/github/ctrimble/chlorine/classloader/NeonURLClassLoader";
+    private static String CHLORINE_SECURE_CLASS_LOADER_NAME = "com/github/ctrimble/chlorine/classloader/ChlorineSecureClassLoader";
+    private static String CHLORINE_CLASS_LOADER_NAME = "com/github/ctrimble/chlorine/classloader/ChlorineClassLoader";
+    private static String CHLORINE_URL_CLASS_LOADER_NAME = "com/github/ctrimble/chlorine/classloader/ChlorineURLClassLoader";
     private static Set<String> DEFINE_CLASS_DESCS = new HashSet<String>();
     private static Set<String> DEFINE_CLASS_SECURE_DESCS = new HashSet<String>();
     static {
@@ -83,7 +83,7 @@ public class DefineClassAdapter extends ClassVisitor {
 	
 	@Override
 	public MethodVisitor visitMethod(int access, String name, String desc, String signature, String[] exceptions) {
-      if(name.startsWith(NEON_CLASSLOADER_PACKAGE)) return super.visitMethod(access, name, desc, signature, exceptions);
+      if(name.startsWith(CHLORINE_CLASSLOADER_PACKAGE)) return super.visitMethod(access, name, desc, signature, exceptions);
       else return new DefineClassVisitor(super.visitMethod(access, name, desc, signature, exceptions));
 	}
 	
@@ -100,11 +100,11 @@ public class DefineClassAdapter extends ClassVisitor {
 		        ( (DEFINE_CLASS_DESCS.contains(desc) && isClassLoader() ) ||
 		          (DEFINE_CLASS_SECURE_DESCS.contains(desc) && isSecureClassLoader() ) ) ) {
 				if( isURLClassLoader() )
-					mv.visitMethodInsn(opcode, NEON_URL_CLASS_LOADER_NAME, NEON_DEFINE_CLASS_NAME, desc);
+					mv.visitMethodInsn(opcode, CHLORINE_URL_CLASS_LOADER_NAME, CHLORINE_DEFINE_CLASS_NAME, desc);
 				else if( isSecureClassLoader() )
-				    mv.visitMethodInsn(opcode, NEON_SECURE_CLASS_LOADER_NAME, NEON_DEFINE_CLASS_NAME, desc);
+				    mv.visitMethodInsn(opcode, CHLORINE_SECURE_CLASS_LOADER_NAME, CHLORINE_DEFINE_CLASS_NAME, desc);
 				else if( isClassLoader() ) {
-					mv.visitMethodInsn(opcode, NEON_CLASS_LOADER_NAME, NEON_DEFINE_CLASS_NAME, desc);
+					mv.visitMethodInsn(opcode, CHLORINE_CLASS_LOADER_NAME, CHLORINE_DEFINE_CLASS_NAME, desc);
 				}
 			}
 			else super.visitMethodInsn(opcode, owner, name, desc);

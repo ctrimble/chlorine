@@ -8,7 +8,7 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>chlorine-asm</artifactId>
-  <name>Neon :: ASM</name>
+  <name>Chlorine :: ASM</name>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
