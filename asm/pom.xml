@@ -3,19 +3,19 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <artifactId>neon</artifactId>
-    <groupId>com.github.ctrimble.neon</groupId>
+    <artifactId>chlorine</artifactId>
+    <groupId>com.github.ctrimble.chlorine</groupId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>neon-asm</artifactId>
+  <artifactId>chlorine-asm</artifactId>
   <name>Neon :: ASM</name>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   <dependencies>
     <dependency>
-        <artifactId>neon-core</artifactId>
-    <groupId>com.github.ctrimble.neon</groupId>
+        <artifactId>chlorine-core</artifactId>
+    <groupId>com.github.ctrimble.chlorine</groupId>
     <version>0.0.1-SNAPSHOT</version>
     </dependency>
     <dependency>

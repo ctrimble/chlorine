@@ -3,11 +3,11 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <artifactId>neon</artifactId>
-    <groupId>com.github.ctrimble.neon</groupId>
+    <artifactId>chlorine</artifactId>
+    <groupId>com.github.ctrimble.chlorine</groupId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>neon-core</artifactId>
+  <artifactId>chlorine-core</artifactId>
   <name>Neon :: Core</name>
   <url>http://maven.apache.org</url>
   <properties>

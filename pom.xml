@@ -8,13 +8,13 @@
     <version>1-SNAPSHOT</version>
   </parent>
 
-  <groupId>com.github.ctrimble.neon</groupId>
-  <artifactId>neon</artifactId>
+  <groupId>com.github.ctrimble.chlorine</groupId>
+  <artifactId>chlorine</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>Neon</name>
-  <url>http://ctrimble.github.com/neon</url>
+  <url>http://ctrimble.github.com/chlorine</url>
 
   <properties>
     <java.source.version>1.6</java.source.version>
@@ -68,7 +68,7 @@
             <artifactId>site-maven-plugin</artifactId>
             <version>0.5</version>
             <configuration>
-              <repositoryName>neon</repositoryName>
+              <repositoryName>chlorine</repositoryName>
               <repositoryOwner>ctrimble</repositoryOwner>
               <message>Creating site for ${project.version}</message>
             </configuration>
