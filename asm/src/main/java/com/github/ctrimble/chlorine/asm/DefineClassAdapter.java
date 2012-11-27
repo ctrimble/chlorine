@@ -26,6 +26,11 @@ import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.MethodVisitor;
 
+/**
+ * A class visitor for ASM 4 that injects Chlorine class loaders into java class files.
+ * 
+ * @author Christian Trimble
+ */
 public class DefineClassAdapter extends ClassVisitor {
     private static String CHLORINE_CLASSLOADER_PACKAGE = "com/github/ctrimble/chlorine/classloader/";
     private static String CHLORINE_DEFINE_CLASS_NAME = "chlorineDefineClass";
@@ -87,6 +92,11 @@ public class DefineClassAdapter extends ClassVisitor {
       else return new DefineClassVisitor(super.visitMethod(access, name, desc, signature, exceptions));
 	}
 	
+	/**
+	 * An ASM 4 class visitor that replaces instantiations of java class loaders with Chlorine class loaders.
+	 * 
+	 * @author Christian Trimble
+	 */
 	public class DefineClassVisitor
 	    extends MethodVisitor
 	{

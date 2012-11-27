@@ -18,6 +18,11 @@ package com.github.ctrimble.chlorine.classloader;
 import java.nio.ByteBuffer;
 import java.security.CodeSource;
 
+/**
+ * Chlorine specific replacements for the defineClass methods provided by java.security.SecureClassLoader.
+ * 
+ * @author Christian Trimble
+ */
 public interface ChlorineSecureClassDefiner
   extends ChlorineClassDefiner {
     Class<?> chlorineDefineClass(String name, byte[] b, int off, int len, CodeSource cs);

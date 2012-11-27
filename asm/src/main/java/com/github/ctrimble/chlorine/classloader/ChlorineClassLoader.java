@@ -6,6 +6,14 @@ import java.security.ProtectionDomain;
 import com.github.ctrimble.chlorine.asm.ClassByteLoader;
 import com.github.ctrimble.chlorine.asm.ClassTransformer;
 
+/**
+ * Chlorine's replacement for java.lang.ClassLoader references.  In cases where ClassLoader is instantiated, an
+ * instance of this class will be used instead.  In cases where non java/javax packages extend java.lang.ClassLoader,
+ * this class loader will be injected into the class hierarchy.
+ * 
+ * @author Christian Trimble
+ *
+ */
 public class ChlorineClassLoader extends ClassLoader implements ChlorineClassDefiner {
 
 	private ClassByteLoader loader;

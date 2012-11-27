@@ -6,13 +6,30 @@ import java.nio.ByteBuffer;
 import java.security.ProtectionDomain;
 import java.util.Arrays;
 
+/**
+ * A set of static methods that are injected into reflection based code.
+ * 
+ * @author Christian Trimble
+ */
 public class ReflectionInterceptor {
 	
 	public static final Class<?>[] DEFINE_PARAMS_BYTE = new Class<?>[] { byte[].class, int.class, int.class };
 	public static final Class<?>[] DEFINE_PARAMS_NAME_BYTE = new Class<?>[] { String.class, byte[].class, int.class, int.class };
 	public static final Class<?>[] DEFINE_PARAMS_NAME_BYTE_DOMAIN = new Class<?>[] { String.class, byte[].class, int.class, int.class, ProtectionDomain.class };
 	public static final Class<?>[] DEFINE_PARAMS_NAME_BUFFER_DOMAIN = new Class<?>[] { String.class, ByteBuffer.class, ProtectionDomain.class };
-	
+
+	/**
+	 * Replaces calls to Method.invoke( Object, Object... ), so that reflection code can also be altered.  The current implementation watches for calls to defineClass
+	 * and applies Chlorine's class transformation code.
+	 * 
+	 * @param method
+	 * @param target
+	 * @param parameters
+	 * @return
+	 * @throws IllegalArgumentException
+	 * @throws IllegalAccessException
+	 * @throws InvocationTargetException
+	 */
   public static Object invoke( Method method, Object target, Object... parameters ) throws IllegalArgumentException, IllegalAccessException, InvocationTargetException {
 	  if( method.getDeclaringClass() == ClassLoader.class && method.getName().equals("defineClass") && method.isAccessible() ) {
 		  Class<?>[] paramTypes = method.getParameterTypes();
@@ -42,6 +59,16 @@ public class ReflectionInterceptor {
 	  }
   }
   
+  /**
+   * Used by invoke to transform class bytes before they are loaded.
+   * 
+   * @param bytes
+   * @param off
+   * @param len
+   * @param loader
+   * @return
+   * @throws InvocationTargetException
+   */
   private static byte[] transformBytes( byte[] bytes, int off, int len, ClassByteLoader loader )
     throws InvocationTargetException
   {

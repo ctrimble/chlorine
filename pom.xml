@@ -45,6 +45,11 @@
 	<artifactId>asm-analysis</artifactId>
 	<version>${asm.version}</version>
 </dependency>
+      <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+        <version>3.0.1</version>
+      </dependency>
             
     <dependency>
   <groupId>junit</groupId>
@@ -88,5 +93,7 @@
   <modules>
   	<module>asm</module>
   	<module>core</module>
+  	<module>servlet</module>
+  	<module>demo</module>
   </modules>
 </project>

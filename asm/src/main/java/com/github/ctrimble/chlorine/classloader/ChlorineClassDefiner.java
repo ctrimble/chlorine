@@ -18,6 +18,11 @@ package com.github.ctrimble.chlorine.classloader;
 import java.nio.ByteBuffer;
 import java.security.ProtectionDomain;
 
+/**
+ * Chlorine specific replacements for the defineClass methods provided by java.lang.ClassLoader.
+ * 
+ * @author Christian Trimble
+ */
 public interface ChlorineClassDefiner {
 	Class<?> chlorineDefineClass(byte[] b, int off, int len)
 			throws ClassFormatError;

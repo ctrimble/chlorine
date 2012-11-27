@@ -23,6 +23,13 @@ import java.security.SecureClassLoader;
 import com.github.ctrimble.chlorine.asm.ClassByteLoader;
 import com.github.ctrimble.chlorine.asm.ClassTransformer;
 
+/**
+ * Chlorine's replacement for java.security.SecureClassLoader.  In cases where a SecureClassLoader is instantiated,
+ * this class will be used instead.  In cases where a non java/javax class extends SecureClassLoader, this
+ * class will be injected into the class hierarchy.
+ * 
+ * @author Christian Trimble
+ */
 public class ChlorineSecureClassLoader extends SecureClassLoader implements ChlorineSecureClassDefiner {
 
 	private ClassByteLoader loader;

@@ -25,6 +25,13 @@ import java.security.ProtectionDomain;
 import com.github.ctrimble.chlorine.asm.ClassByteLoader;
 import com.github.ctrimble.chlorine.asm.ClassTransformer;
 
+/**
+ * Chlorine's replacement for java.net.URLClassLoader.  In cases where a URLClassLoader is instantiated,
+ * this class will be used instead.  In cases where a non java/javax class extends URLClassLoader, this
+ * class will be injected into the class hierarchy.
+ * 
+ * @author Christian Trimble
+ */
 public class ChlorineURLClassLoader extends URLClassLoader implements ChlorineSecureClassDefiner {
 	private ClassByteLoader loader;
 

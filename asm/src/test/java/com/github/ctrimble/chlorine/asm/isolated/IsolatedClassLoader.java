@@ -2,6 +2,12 @@ package com.github.ctrimble.chlorine.asm.isolated;
 
 import static com.github.ctrimble.chlorine.asm.Utils.getResourceBytes;
 
+/**
+ * A class loader that will load new copies of classes in the package com.github.ctrimble.neon.asm.isolated.
+ * 
+ * @author Christian Trimble
+ *
+ */
 public class IsolatedClassLoader
 	  extends ClassLoader
 	  {
