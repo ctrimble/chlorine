@@ -2,6 +2,7 @@ Project Chlorine
 ====================
 
 A Java ClassLoader framework for cleaning up JVM singleton services.
+[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/821699c8f29cccbf168645c50bd872c9 "githalytics.com")](http://githalytics.com/ctrimble/chlorine)
 
 The problem with some JVM features
 ----------------------------------
