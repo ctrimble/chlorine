@@ -1,0 +1,25 @@
+-classpath
+'/Users/ctrimble/git/chlorine/target/classes:/Users/ctrimble/git/chlorine/target/test-classes:/Users/ctrimble/git/chlorine/core/target/classes:/Users/ctrimble/git/chlorine/core/target/test-classes:/Users/ctrimble/git/chlorine/asm/target/classes:/Users/ctrimble/git/chlorine/asm/target/test-classes:/Users/ctrimble/.m2/public-repository/org/ow2/asm/asm-util/4.0/asm-util-4.0.jar:/Users/ctrimble/.m2/public-repository/commons-io/commons-io/2.3/commons-io-2.3.jar:/Users/ctrimble/.m2/public-repository/org/ow2/asm/asm-tree/4.0/asm-tree-4.0.jar:/Users/ctrimble/git/chlorine/core/target/classes:/Users/ctrimble/.m2/public-repository/org/ow2/asm/asm-analysis/4.0/asm-analysis-4.0.jar:/Users/ctrimble/.m2/public-repository/org/ow2/asm/asm/4.0/asm-4.0.jar:/Users/ctrimble/.m2/public-repository/junit/junit/4.8.1/junit-4.8.1.jar'
+-encoding
+'UTF-8'
+-protected
+-sourcepath
+'/Users/ctrimble/git/chlorine/asm/src/test/java'
+-author
+-bottom
+'Copyright &#169; 2012. All Rights Reserved.'
+-charset
+'UTF-8'
+-d
+'/Users/ctrimble/git/chlorine/target/site/testapidocs'
+-docencoding
+'UTF-8'
+-docfilessubdirs
+-doctitle
+'Chlorine 0.0.1-SNAPSHOT Test API'
+-link
+'../apidocs'
+-use
+-version
+-windowtitle
+'Chlorine 0.0.1-SNAPSHOT Test API'
