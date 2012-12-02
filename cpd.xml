@@ -1,3 +1,127 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pmd-cpd>
+<duplication lines="41" tokens="346">
+<file line="41" path="/Users/ctrimble/git/chlorine/asm/src/main/java/com/github/ctrimble/chlorine/classloader/ChlorineSecureClassLoader.java"/>
+<file line="49" path="/Users/ctrimble/git/chlorine/asm/src/main/java/com/github/ctrimble/chlorine/classloader/ChlorineURLClassLoader.java"/>
+<codefragment>
+<![CDATA[
+		super(urls, parent, factory);
+		loader = new ClassByteLoader(this);
+	}
+	
+	@SuppressWarnings("deprecation")
+	public Class<?> chlorineDefineClass(byte[] b, int off, int len)
+			throws ClassFormatError {
+		byte[] newBytes = ClassTransformer.transform(b, off, len, loader);
+		return defineClass(newBytes, 0, newBytes.length);
+	}
+
+	public Class<?> chlorineDefineClass(String name, byte[] b, int off, int len)
+			throws ClassFormatError {
+		byte[] newBytes = ClassTransformer.transform(b, off, len, loader);
+		return defineClass(name, newBytes, 0, newBytes.length);
+	}
+
+	public Class<?> chlorineDefineClass(String name, byte[] b, int off, int len,
+			ProtectionDomain protectionDomain) throws ClassFormatError {
+		byte[] newBytes = ClassTransformer.transform(b, off, len, loader);
+		return defineClass(name,  newBytes, 0, newBytes.length, protectionDomain);
+	}
+
+	public Class<?> chlorineDefineClass(String name, ByteBuffer b,
+			ProtectionDomain protectionDomain) throws ClassFormatError {
+		byte[] newBytes = new byte[b.remaining()];
+	    b.get(newBytes);
+		return defineClass(name, newBytes, 0, newBytes.length, protectionDomain);
+	}
+
+	public Class<?> chlorineDefineClass(String name, byte[] b, int off, int len, CodeSource cs) {
+		byte[] newBytes = ClassTransformer.transform(b, off, len, loader);
+		return defineClass(name, newBytes, 0, newBytes.length, cs);
+	}
+
+	public Class<?> chlorineDefineClass(String name, ByteBuffer b, CodeSource cs) {
+		byte[] newBytes = new byte[b.remaining()];
+	    b.get(newBytes);
+		return defineClass(name, newBytes, 0, newBytes.length, cs);
+	}
+}
+]]>
+</codefragment>
+</duplication>
+<duplication lines="30" tokens="242">
+<file line="24" path="/Users/ctrimble/git/chlorine/asm/src/main/java/com/github/ctrimble/chlorine/classloader/ChlorineClassLoader.java"/>
+<file line="40" path="/Users/ctrimble/git/chlorine/asm/src/main/java/com/github/ctrimble/chlorine/classloader/ChlorineSecureClassLoader.java"/>
+<codefragment>
+<![CDATA[
+	public ChlorineSecureClassLoader(ClassLoader parent) {
+		super(parent);
+		loader = new ClassByteLoader(this);
+	}
+
+	@SuppressWarnings("deprecation")
+	public Class<?> chlorineDefineClass(byte[] b, int off, int len)
+			throws ClassFormatError {
+		byte[] newBytes = ClassTransformer.transform(b, off, len, loader);
+		return defineClass(newBytes, 0, newBytes.length);
+	}
+
+	public Class<?> chlorineDefineClass(String name, byte[] b, int off, int len)
+			throws ClassFormatError {
+		byte[] newBytes = ClassTransformer.transform(b, off, len, loader);
+		return defineClass(name, newBytes, 0, newBytes.length);
+	}
+
+	public Class<?> chlorineDefineClass(String name, byte[] b, int off, int len,
+			ProtectionDomain protectionDomain) throws ClassFormatError {
+		byte[] newBytes = ClassTransformer.transform(b, off, len, loader);
+		return defineClass(name,  newBytes, 0, newBytes.length, protectionDomain);
+	}
+
+	public Class<?> chlorineDefineClass(String name, ByteBuffer b,
+			ProtectionDomain protectionDomain) throws ClassFormatError {
+		byte[] newBytes = new byte[b.remaining()];
+	    b.get(newBytes);
+		return defineClass(name, newBytes, 0, newBytes.length, protectionDomain);
+	}
+]]>
+</codefragment>
+</duplication>
+<duplication lines="29" tokens="234">
+<file line="25" path="/Users/ctrimble/git/chlorine/asm/src/main/java/com/github/ctrimble/chlorine/classloader/ChlorineClassLoader.java"/>
+<file line="49" path="/Users/ctrimble/git/chlorine/asm/src/main/java/com/github/ctrimble/chlorine/classloader/ChlorineURLClassLoader.java"/>
+<codefragment>
+<![CDATA[
+		super(urls, parent, factory);
+		loader = new ClassByteLoader(this);
+	}
+	
+	@SuppressWarnings("deprecation")
+	public Class<?> chlorineDefineClass(byte[] b, int off, int len)
+			throws ClassFormatError {
+		byte[] newBytes = ClassTransformer.transform(b, off, len, loader);
+		return defineClass(newBytes, 0, newBytes.length);
+	}
+
+	public Class<?> chlorineDefineClass(String name, byte[] b, int off, int len)
+			throws ClassFormatError {
+		byte[] newBytes = ClassTransformer.transform(b, off, len, loader);
+		return defineClass(name, newBytes, 0, newBytes.length);
+	}
+
+	public Class<?> chlorineDefineClass(String name, byte[] b, int off, int len,
+			ProtectionDomain protectionDomain) throws ClassFormatError {
+		byte[] newBytes = ClassTransformer.transform(b, off, len, loader);
+		return defineClass(name,  newBytes, 0, newBytes.length, protectionDomain);
+	}
+
+	public Class<?> chlorineDefineClass(String name, ByteBuffer b,
+			ProtectionDomain protectionDomain) throws ClassFormatError {
+		byte[] newBytes = new byte[b.remaining()];
+	    b.get(newBytes);
+		return defineClass(name, newBytes, 0, newBytes.length, protectionDomain);
+	}
+]]>
+</codefragment>
+</duplication>
 </pmd-cpd>
