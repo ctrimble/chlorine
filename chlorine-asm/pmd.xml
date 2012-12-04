@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.2.5" timestamp="2012-12-03T17:55:17.755">
+<file name="/Users/ctrimble/git/chlorine/asm/src/main/java/com/github/ctrimble/chlorine/asm/DefineClassAdapter.java">
+<violation beginline="20" endline="20" begincolumn="1" endcolumn="49" rule="UnusedImports" ruleset="Import Statement Rules" package="com.github.ctrimble.chlorine.asm" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'org.objectweb.asm.Opcodes.GETFIELD'
+</violation>
+</file>
+</pmd>
